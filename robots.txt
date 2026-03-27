@@ -1,0 +1,8 @@
+# Robots.txt for Smile First Dental Clinic
+User-agent: *
+Allow: /
+
+Sitemap: https://smilefirstdentalclinic.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1
