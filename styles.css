@@ -1470,8 +1470,13 @@ h1, h2, h3, h4, h5, h6 {
         gap: 30px;
     }
     
+    .stat-item {
+        flex: 0 0 auto;
+    }
+    
     .trust-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .section-title {
@@ -1544,33 +1549,37 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-stats {
-        flex-direction: column;
-        gap: 20px;
+        justify-content: flex-start;
+        gap: 24px;
     }
     
-    .testimonial-card {
-        flex: 0 0 260px;
-    }
-}
-    
-    .section-title {
-        font-size: 1.75rem;
-    }
-    
-    .hero-stats {
-        flex-direction: column;
-        gap: 20px;
+    .stat-item {
+        flex: 0 0 auto;
     }
     
     .stat-num {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
-    
-    .trust-grid {
-        grid-template-columns: 1fr;
+}
+
+.section-title {
+    font-size: 1.75rem;
+}
+
+.testimonial-card {
+        flex: 0 0 260px;
     }
-    
-    .testimonial-card {
+}
+
+.section-title {
+    font-size: 1.75rem;
+}
+
+.stat-num {
+    font-size: 2rem;
+}
+
+.testimonial-card {
         padding: 26px;
     }
 }
