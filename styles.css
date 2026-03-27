@@ -809,11 +809,33 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 0;
 }
 
-.testimonial-slider {
-    overflow: hidden;
-    padding: 20px 0;
-    max-width: 100vw;
-}
+    /* Testimonials - Swipe Carousel */
+    .testimonial-slider {
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 20px 0;
+        max-width: 100vw;
+    }
+    
+    .testimonial-slider::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .testimonial-track {
+        display: flex;
+        gap: 0;
+        width: 100%;
+        animation: none;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+        max-width: 100%;
+        margin: 0 16px;
+    }
 
 .testimonial-track {
     display: flex;
@@ -1356,6 +1378,15 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
 }
 
+/* Hide mobile book button on desktop */
+.mobile-book-btn {
+    display: none;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
 /* Animations */
 @keyframes pulse {
     0%, 100% {
@@ -1556,42 +1587,116 @@ h1, h2, h3, h4, h5, h6 {
         overflow-x: hidden;
     }
     
+    /* Hero - Brighter background on mobile */
+    .hero-overlay {
+        background: linear-gradient(135deg, rgba(14,124,134,0.65) 0%, rgba(14,124,134,0.5) 100%);
+    }
+    
+    .hero-bg img {
+        filter: brightness(1.1) saturate(1.1);
+    }
+    
+    /* Hero - More compact */
+    .hero {
+        padding: 100px 0 50px;
+    }
+    
+    .hero-content {
+        padding: 0;
+    }
+    
+    .hero-badge {
+        padding: 8px 14px;
+        font-size: 0.75rem;
+        margin-bottom: 20px;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.85rem;
+        margin-bottom: 14px;
     }
     
     .hero-desc {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
     }
     
     .hero-btns {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline {
+        padding: 14px 20px;
+        justify-content: center;
     }
     
     .hero-stats {
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 16px;
     }
     
     .stat-item {
-        flex: 0 0 calc(50% - 10px);
+        flex: 0 0 calc(50% - 8px);
     }
     
     .stat-item .stat-num {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     
     .stat-item .stat-label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
     
-    .section-title {
-        font-size: 1.75rem;
+    /* Section padding - more compact */
+    :root {
+        --section-padding: 50px 0;
     }
     
     .section-header {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-desc {
+        font-size: 0.9rem;
+    }
+    
+    /* Trust bar */
+    .trust-bar {
+        padding: 20px 0;
+        margin-top: -40px;
+    }
+    
+    .trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 0 12px;
+    }
+    
+    .trust-item {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .trust-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .trust-info h4 {
+        font-size: 0.85rem;
+    }
+    
+    .trust-info p {
+        font-size: 0.75rem;
     }
     
     .trust-grid {
@@ -1610,18 +1715,78 @@ h1, h2, h3, h4, h5, h6 {
         height: 48px;
     }
     
+    /* About - Compact */
+    .about {
+        padding: 40px 0;
+    }
+    
+    .about-grid {
+        gap: 24px;
+    }
+    
     .about-main-img img {
-        height: 280px;
+        height: 220px;
     }
     
     .exp-badge {
-        right: 12px;
-        bottom: 12px;
-        padding: 14px 18px;
+        right: 10px;
+        bottom: 10px;
+        padding: 10px 14px;
     }
     
     .exp-badge span {
+        font-size: 1.25rem;
+    }
+    
+    .about-lead {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .doctor-card {
+        padding: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .doctor-card img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .doctor-info h4 {
+        font-size: 0.95rem;
+    }
+    
+    .about-features li {
+        font-size: 0.85rem;
+        padding: 6px 0;
+    }
+    
+    /* Why Choose Us - Compact */
+    .why-us {
+        padding: 40px 0;
+    }
+    
+    .why-grid {
+        gap: 10px;
+    }
+    
+    .why-card {
+        padding: 16px 12px;
+    }
+    
+    .why-num {
         font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .why-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .why-card p {
+        font-size: 0.8rem;
     }
     
     .doctor-card {
@@ -1637,9 +1802,31 @@ h1, h2, h3, h4, h5, h6 {
         padding: 24px 18px;
     }
     
+    /* Gallery - Full-width swipe slider */
     .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0;
+        margin: 0 -16px;
+        padding: 0 16px;
+    }
+    
+    .gallery-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .gallery-item {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        margin-right: 12px;
+        aspect-ratio: 4/3;
+    }
+    
+    .gallery-item:last-child {
+        margin-right: 0;
     }
     
     .testimonial-card {
@@ -1647,23 +1834,79 @@ h1, h2, h3, h4, h5, h6 {
         padding: 24px;
     }
     
+    /* Stats - Compact */
+    .stats {
+        padding: 40px 0;
+    }
+    
     .stats-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        gap: 16px;
     }
     
     .stats .stat-num {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+    
+    .stats .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    /* Contact - Compact */
+    .contact {
+        padding: 40px 0;
+    }
+    
+    .contact-grid {
+        gap: 30px;
+    }
+    
+    .contact-form-wrapper {
+        padding: 20px 14px;
+        max-width: 100%;
+    }
+    
+    .contact-form h3 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+    
+    /* FAQ - Compact with less whitespace */
+    .faq {
+        padding: 50px 0;
+    }
+    
+    .faq-grid {
+        gap: 10px;
     }
     
     .faq-question {
-        padding: 16px 18px;
+        padding: 14px 16px;
         font-size: 0.95rem;
     }
     
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    .faq-item.active .faq-answer {
+        max-height: 150px;
+    }
+    
     .faq-answer p {
-        padding: 0 18px 16px;
-        font-size: 0.875rem;
+        padding: 0 16px 14px;
+        font-size: 0.85rem;
     }
     
     .contact-form-wrapper {
@@ -1676,8 +1919,9 @@ h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
     }
     
+    /* Map */
     .map-container {
-        height: 300px;
+        height: 280px;
         max-width: 100%;
         overflow: hidden;
     }
@@ -1687,8 +1931,13 @@ h1, h2, h3, h4, h5, h6 {
         width: 100% !important;
     }
     
+    /* Footer - Compact */
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
     .footer-grid {
-        gap: 28px;
+        gap: 24px;
         overflow-x: hidden;
         max-width: 100%;
     }
@@ -1698,12 +1947,70 @@ h1, h2, h3, h4, h5, h6 {
         overflow-x: hidden;
     }
     
+    .footer h4 {
+        font-size: 1rem;
+        margin-bottom: 14px;
+    }
+    
+    .footer-links a,
+    .footer-services a {
+        font-size: 0.85rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    /* Mobile Floating Book Button */
+    .mobile-book-btn {
+        display: flex !important;
+        position: fixed;
+        bottom: 80px;
+        left: 16px;
+        right: 16px;
+        z-index: 998;
+        background: var(--accent);
+        color: var(--text-dark);
+        padding: 16px 24px;
+        border-radius: var(--border-radius);
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--shadow-lg);
+        animation: slideUp 0.3s ease;
+    }
+    
+    .mobile-book-btn:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+    }
+    
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Adjust WhatsApp float position */
     .whatsapp-float {
         width: 50px;
         height: 50px;
         bottom: 16px;
         right: 16px;
     }
+}
     
     img {
         max-width: 100%;
