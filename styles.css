@@ -1353,20 +1353,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
 }
 
-/* Nav Overlay (mobile menu backdrop) */
-.nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 999;
-    backdrop-filter: blur(2px);
-}
-
-.nav-overlay.active {
-    display: block;
-}
-
 /* Hide mobile book button on desktop */
 .mobile-book-btn {
     display: none;
@@ -1375,26 +1361,6 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================
    Animations
    ============================================ */
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(14,124,134,0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(14,124,134,0); }
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: none;
-}
-
-/* ============================================
-   Responsive - Tablet (max-width: 1024px)
-   ============================================ */
-@media (max-width: 1024px) {
     .hero-title {
         font-size: 3.2rem;
     }
@@ -1485,7 +1451,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-title {
-        font-size: 2.4rem;
+        font-size: 2rem;
     }
     
     .hero-desc {
@@ -1520,6 +1486,11 @@ h1, h2, h3, h4, h5, h6 {
     
     .about-images {
         order: -1;
+    }
+    
+    .exp-badge {
+        right: 10px;
+        bottom: 10px;
     }
     
     .about-main-img img {
@@ -1571,13 +1542,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+    * {
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+    
     html, body {
-        overflow-x: hidden;
-        max-width: 100vw;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
     }
     
     .container {
         padding: 0 16px;
+        max-width: 100% !important;
+        overflow-x: hidden;
     }
     
     /* Navigation - Compact */
@@ -1601,7 +1579,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.6rem;
     }
     
-    /* Sidebar */
+    /* Sidebar - Improved */
     .nav-menu {
         width: 75%;
         max-width: 260px;
@@ -1613,7 +1591,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1rem;
     }
     
-    /* Hero */
+    /* Hero - Brighter background on mobile */
     .hero-overlay {
         background: linear-gradient(135deg, rgba(14,124,134,0.65) 0%, rgba(14,124,134,0.5) 100%);
     }
@@ -1622,6 +1600,7 @@ h1, h2, h3, h4, h5, h6 {
         filter: brightness(1.1) saturate(1.1);
     }
     
+    /* Hero - More compact */
     .hero {
         padding: 100px 0 50px;
     }
@@ -1637,26 +1616,35 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hero-title {
-        font-size: 1.85rem;
+        font-size: 1.5rem;
         margin-bottom: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Hide manual line break in hero title on mobile */
+    .hero-title br {
+        display: none;
     }
     
     .hero-desc {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         margin-bottom: 24px;
     }
     
     .hero-btns {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         gap: 10px;
         margin-bottom: 30px;
     }
     
     .hero-btns .btn-primary,
     .hero-btns .btn-outline {
-        padding: 14px 20px;
+        padding: 12px 28px;
+        width: auto;
         justify-content: center;
+        font-size: 0.88rem;
     }
     
     .hero-stats {
@@ -1680,7 +1668,7 @@ h1, h2, h3, h4, h5, h6 {
         white-space: nowrap;
     }
     
-    /* Section padding */
+    /* Section padding - more compact */
     :root {
         --section-padding: 50px 0;
     }
@@ -1705,19 +1693,18 @@ h1, h2, h3, h4, h5, h6 {
     
     .trust-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        padding: 0 16px;
+        gap: 12px;
+        padding: 0 12px;
     }
     
     .trust-item {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
         gap: 10px;
     }
     
     .trust-icon {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         font-size: 1rem;
     }
     
@@ -1729,7 +1716,23 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.75rem;
     }
     
-    /* About */
+    .trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 0 16px;
+    }
+    
+    .trust-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .trust-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    /* About - Compact */
     .about {
         padding: 40px 0;
     }
@@ -1758,8 +1761,6 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .doctor-card {
-        flex-direction: column;
-        text-align: center;
         padding: 14px;
         margin-bottom: 20px;
     }
@@ -1767,7 +1768,6 @@ h1, h2, h3, h4, h5, h6 {
     .doctor-card img {
         width: 50px;
         height: 50px;
-        margin: 0 auto;
     }
     
     .doctor-info h4 {
@@ -1779,12 +1779,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 6px 0;
     }
     
-    /* Services */
-    .service-card {
-        padding: 24px 20px;
-    }
-    
-    /* Why Choose Us */
+    /* Why Choose Us - Compact */
     .why-us {
         padding: 40px 0;
     }
@@ -1794,7 +1789,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .why-card {
-        padding: 24px 18px;
+        padding: 16px 12px;
     }
     
     .why-num {
@@ -1811,55 +1806,67 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.8rem;
     }
     
-    /* Gallery - Auto scroll */
+    .doctor-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-card {
+        padding: 24px 20px;
+    }
+    
+    .why-card {
+        padding: 24px 18px;
+    }
+    
+    /* Gallery - Simple 2-col grid on mobile (animation needs duplicated DOM nodes to loop) */
     .gallery-grid {
-        display: flex;
-        overflow-x: hidden;
-        gap: 12px;
-        padding: 0 16px;
-        animation: scrollGallery 25s linear infinite;
-    }
-    
-    .gallery-grid:hover {
-        animation-play-state: paused;
-    }
-    
-    @keyframes scrollGallery {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 0;
+        animation: none;
+        overflow-x: visible;
     }
     
     .gallery-item {
-        flex: 0 0 70%;
+        flex: unset;
         aspect-ratio: 4/3;
+        border-radius: 8px;
     }
     
-    /* Testimonials - Auto scroll */
+    /* Testimonials - Touch-scroll on mobile (animation needs duplicated DOM, so use native scroll instead) */
+    .testimonials .container {
+        padding-right: 16px;
+    }
+    
     .testimonial-slider {
-        overflow: hidden;
-        padding: 20px 0;
+        overflow-x: auto;
+        overflow-y: visible;
+        padding: 10px 0 20px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .testimonial-slider::-webkit-scrollbar {
+        display: none;
     }
     
     .testimonial-track {
         display: flex;
-        gap: 16px;
+        flex-direction: row;
+        gap: 14px;
         width: max-content;
-        animation: scrollTestimonialsMobile 20s linear infinite;
-    }
-    
-    .testimonial-track:hover {
-        animation-play-state: paused;
-    }
-    
-    @keyframes scrollTestimonialsMobile {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        animation: none;
+        transform: none !important;
+        padding: 4px 16px 4px 16px;
     }
     
     .testimonial-card {
-        flex: 0 0 75%;
+        flex: 0 0 80vw;
+        max-width: 300px;
         padding: 18px;
-        margin: 0;
+        scroll-snap-align: start;
     }
     
     .testimonial-header {
@@ -1885,7 +1892,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.75rem;
     }
     
-    /* Stats */
+    /* Stats - Compact */
     .stats {
         padding: 40px 0;
     }
@@ -1903,30 +1910,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.85rem;
     }
     
-    /* FAQ */
-    .faq {
-        padding: 50px 0;
-    }
-    
-    .faq-grid {
-        gap: 10px;
-    }
-    
-    .faq-question {
-        padding: 14px 16px;
-        font-size: 0.95rem;
-    }
-    
-    .faq-item.active .faq-answer {
-        max-height: 200px;
-    }
-    
-    .faq-answer p {
-        padding: 0 16px 14px;
-        font-size: 0.85rem;
-    }
-    
-    /* Contact */
+    /* Contact - Compact */
     .contact {
         padding: 40px 0;
     }
@@ -1936,7 +1920,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .contact-form-wrapper {
-        padding: 20px 16px;
+        padding: 20px 14px;
+        max-width: 100%;
     }
     
     .contact-form h3 {
@@ -1954,22 +1939,70 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.9rem;
     }
     
+    /* FAQ - Compact with less whitespace */
+    .faq {
+        padding: 50px 0;
+    }
+    
+    .faq-grid {
+        gap: 10px;
+    }
+    
+    .faq-question {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    .faq-item.active .faq-answer {
+        max-height: 150px;
+    }
+    
+    .faq-answer p {
+        padding: 0 16px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .contact-form-wrapper {
+        padding: 24px 18px;
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    .contact-form-wrapper * {
+        max-width: 100%;
+    }
+    
     /* Map */
     .map-container {
         height: 280px;
+        max-width: 100%;
+        overflow: hidden;
     }
     
     .map-container iframe {
-        width: 100%;
+        max-width: 100%;
+        width: 100% !important;
     }
     
-    /* Footer */
+    /* Footer - Compact */
     .footer {
         padding: 40px 0 20px;
     }
     
     .footer-grid {
         gap: 24px;
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    .footer, .footer * {
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
     .footer h4 {
@@ -1988,8 +2021,9 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         padding-top: 20px;
     }
+}
     
-    /* WhatsApp float */
+    /* Adjust WhatsApp float position */
     .whatsapp-float {
         width: 50px;
         height: 50px;
@@ -1997,3 +2031,17 @@ h1, h2, h3, h4, h5, h6 {
         right: 16px;
     }
 }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    section {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    section * {
+        max-width: 100%;
+    }
