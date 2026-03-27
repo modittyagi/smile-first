@@ -1541,8 +1541,17 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .exp-badge {
-        right: 10px;
-        bottom: 10px;
+        right: 8px;
+        bottom: 8px;
+        padding: 8px 12px;
+    }
+    
+    .exp-badge span {
+        font-size: 1rem;
+    }
+    
+    .exp-badge small {
+        font-size: 0.6rem;
     }
     
     .about-main-img img {
