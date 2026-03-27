@@ -1359,8 +1359,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   Animations
+   Responsive - Tablet (max-width: 1024px)
    ============================================ */
+@media (max-width: 1024px) {
     .hero-title {
         font-size: 3.2rem;
     }
@@ -1387,11 +1388,12 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
     :root {
-        --section-padding: 70px 0;
+        --section-padding: 56px 0;
     }
     
+    /* Navbar */
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1405,6 +1407,7 @@ h1, h2, h3, h4, h5, h6 {
         box-shadow: var(--shadow-xl);
         transition: var(--transition);
         overflow-x: hidden;
+        z-index: 1000;
     }
     
     .nav-menu.active {
@@ -1416,6 +1419,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.05rem;
         border-bottom: 1px solid rgba(0,0,0,0.06);
         width: 100%;
+        display: block;
     }
     
     .btn-book {
@@ -1445,91 +1449,196 @@ h1, h2, h3, h4, h5, h6 {
         transform: rotate(-45deg) translate(5px, -5px);
     }
     
+    /* Hero */
     .hero {
         min-height: auto;
-        padding: 110px 0 60px;
+        padding: 100px 0 56px;
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.9rem;
+        word-break: break-word;
+    }
+    
+    .hero-title br {
+        display: none;
     }
     
     .hero-desc {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .hero-btns {
         flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 36px;
+    }
+    
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline {
+        padding: 13px 32px;
+        width: auto;
+        justify-content: center;
+        font-size: 0.9rem;
     }
     
     .hero-stats {
-        flex-wrap: wrap;
-        gap: 30px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 8px;
     }
     
     .stat-item {
-        flex: 0 0 auto;
+        flex: 1;
+        text-align: center;
+        min-width: 0;
     }
     
+    .stat-item .stat-num {
+        font-size: 1.5rem;
+    }
+    
+    .stat-item .stat-label {
+        font-size: 0.7rem;
+    }
+    
+    /* Trust bar */
     .trust-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 16px;
+        padding: 0 8px;
     }
     
+    .trust-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .trust-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+    }
+    
+    /* Section titles */
     .section-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
     
+    .section-desc {
+        font-size: 0.95rem;
+    }
+
+    /* About */
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 32px;
     }
     
     .about-images {
         order: -1;
     }
-    
+
     .exp-badge {
         right: 10px;
         bottom: 10px;
     }
     
     .about-main-img img {
-        height: 350px;
+        height: 280px;
     }
     
     .about-sec-img {
         display: none;
     }
     
-    .services-grid,
-    .why-grid,
-    .testimonials-grid,
-    .gallery-grid,
+    /* Services - single column */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .service-card {
+        padding: 28px 24px;
+    }
+    
+    /* Why us - single column */
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    /* Testimonials - horizontal scroll */
+    .testimonials .container {
+        padding-right: 0;
+    }
+    
+    .testimonial-slider {
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 10px 0 20px;
+    }
+    
+    .testimonial-slider::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .testimonial-track {
+        animation: none;
+        transform: none !important;
+        width: max-content;
+        padding: 4px 20px 4px 20px;
+        gap: 16px;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 80vw;
+        max-width: 300px;
+    }
+    
+    /* FAQ - single column */
     .faq-grid {
         grid-template-columns: 1fr;
     }
     
+    /* Stats */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
     
+    /* Contact - single column */
     .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-    
-    .contact-form-wrapper {
-        padding: 30px;
-    }
-    
-    .footer-grid {
         grid-template-columns: 1fr;
         gap: 36px;
     }
     
+    .contact-form-wrapper {
+        padding: 28px 20px;
+    }
+    
+    .contact-info .section-title {
+        font-size: 1.75rem;
+    }
+    
+    /* Footer - single column */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
     .footer-bottom {
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         text-align: center;
     }
     
@@ -1542,506 +1651,92 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
-    * {
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
-    
     html, body {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
-    }
-    
-    .container {
-        padding: 0 16px;
-        max-width: 100% !important;
         overflow-x: hidden;
     }
     
-    /* Navigation - Compact */
-    .nav-container {
-        padding: 12px 16px;
+    .container {
+        padding: 0 14px;
     }
-    
-    .nav-logo {
-        gap: 8px;
+
+    .nav-container {
+        padding: 10px 14px;
     }
     
     .logo-icon {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .logo-text span {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
     
     .logo-text small {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
     }
     
-    /* Sidebar - Improved */
     .nav-menu {
         width: 75%;
         max-width: 260px;
-        padding: 80px 24px 24px;
+        padding: 80px 20px 20px;
     }
     
-    .nav-link {
-        padding: 12px 0;
-        font-size: 1rem;
-    }
-    
-    /* Hero - Brighter background on mobile */
-    .hero-overlay {
-        background: linear-gradient(135deg, rgba(14,124,134,0.65) 0%, rgba(14,124,134,0.5) 100%);
-    }
-    
-    .hero-bg img {
-        filter: brightness(1.1) saturate(1.1);
-    }
-    
-    /* Hero - More compact */
     .hero {
-        padding: 100px 0 50px;
-    }
-    
-    .hero-content {
-        padding: 0;
-    }
-    
-    .hero-badge {
-        padding: 8px 14px;
-        font-size: 0.75rem;
-        margin-bottom: 20px;
+        padding: 90px 0 44px;
     }
     
     .hero-title {
-        font-size: 1.5rem;
-        margin-bottom: 14px;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    /* Hide manual line break in hero title on mobile */
-    .hero-title br {
-        display: none;
+        font-size: 1.55rem;
     }
     
     .hero-desc {
         font-size: 0.88rem;
-        margin-bottom: 24px;
-    }
-    
-    .hero-btns {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 30px;
     }
     
     .hero-btns .btn-primary,
     .hero-btns .btn-outline {
-        padding: 12px 28px;
-        width: auto;
-        justify-content: center;
+        padding: 11px 28px;
         font-size: 0.88rem;
     }
     
-    .hero-stats {
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        gap: 8px;
-    }
-    
-    .stat-item {
-        flex: 1;
-        min-width: 0;
-        text-align: center;
-    }
-    
     .stat-item .stat-num {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
     .stat-item .stat-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         white-space: nowrap;
-    }
-    
-    /* Section padding - more compact */
-    :root {
-        --section-padding: 50px 0;
-    }
-    
-    .section-header {
-        margin-bottom: 30px;
     }
     
     .section-title {
         font-size: 1.5rem;
     }
     
-    .section-desc {
-        font-size: 0.9rem;
-    }
-    
-    /* Trust bar */
-    .trust-bar {
-        padding: 20px 0;
-        margin-top: -40px;
-    }
-    
-    .trust-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        padding: 0 12px;
-    }
-    
-    .trust-item {
-        flex-direction: row;
-        gap: 10px;
-    }
-    
-    .trust-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .trust-info h4 {
-        font-size: 0.85rem;
-    }
-    
-    .trust-info p {
-        font-size: 0.75rem;
-    }
-    
-    .trust-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        padding: 0 16px;
-    }
-    
-    .trust-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .trust-icon {
-        width: 48px;
-        height: 48px;
-    }
-    
-    /* About - Compact */
-    .about {
-        padding: 40px 0;
-    }
-    
-    .about-grid {
-        gap: 24px;
-    }
-    
     .about-main-img img {
         height: 220px;
     }
     
-    .exp-badge {
-        right: 10px;
-        bottom: 10px;
-        padding: 10px 14px;
-    }
-    
-    .exp-badge span {
-        font-size: 1.25rem;
-    }
-    
-    .about-lead {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-    
-    .doctor-card {
-        padding: 14px;
-        margin-bottom: 20px;
-    }
-    
-    .doctor-card img {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .doctor-info h4 {
-        font-size: 0.95rem;
-    }
-    
-    .about-features li {
-        font-size: 0.85rem;
-        padding: 6px 0;
-    }
-    
-    /* Why Choose Us - Compact */
-    .why-us {
-        padding: 40px 0;
-    }
-    
-    .why-grid {
-        gap: 10px;
-    }
-    
-    .why-card {
-        padding: 16px 12px;
-    }
-    
-    .why-num {
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-    }
-    
-    .why-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 6px;
-    }
-    
-    .why-card p {
-        font-size: 0.8rem;
-    }
-    
-    .doctor-card {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .service-card {
-        padding: 24px 20px;
-    }
-    
-    .why-card {
-        padding: 24px 18px;
-    }
-    
-    /* Gallery - Simple 2-col grid on mobile (animation needs duplicated DOM nodes to loop) */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        padding: 0;
-        animation: none;
-        overflow-x: visible;
-    }
-    
-    .gallery-item {
-        flex: unset;
-        aspect-ratio: 4/3;
-        border-radius: 8px;
-    }
-    
-    /* Testimonials - Touch-scroll on mobile (animation needs duplicated DOM, so use native scroll instead) */
-    .testimonials .container {
-        padding-right: 16px;
-    }
-    
-    .testimonial-slider {
-        overflow-x: auto;
-        overflow-y: visible;
-        padding: 10px 0 20px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    
-    .testimonial-slider::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .testimonial-track {
-        display: flex;
-        flex-direction: row;
-        gap: 14px;
-        width: max-content;
-        animation: none;
-        transform: none !important;
-        padding: 4px 16px 4px 16px;
-    }
-    
-    .testimonial-card {
-        flex: 0 0 80vw;
-        max-width: 300px;
-        padding: 18px;
-        scroll-snap-align: start;
-    }
-    
-    .testimonial-header {
-        margin-bottom: 12px;
-    }
-    
-    .testimonial-text {
-        font-size: 0.85rem;
-        margin-bottom: 14px;
-    }
-    
-    .author-avatar {
-        width: 36px;
-        height: 36px;
-        font-size: 0.75rem;
-    }
-    
-    .author-info h4 {
-        font-size: 0.9rem;
-    }
-    
-    .author-info span {
-        font-size: 0.75rem;
-    }
-    
-    /* Stats - Compact */
-    .stats {
-        padding: 40px 0;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-    }
-    
-    .stats .stat-num {
-        font-size: 1.75rem;
-    }
-    
-    .stats .stat-label {
-        font-size: 0.85rem;
-    }
-    
-    /* Contact - Compact */
-    .contact {
-        padding: 40px 0;
-    }
-    
-    .contact-grid {
-        gap: 30px;
-    }
-    
     .contact-form-wrapper {
         padding: 20px 14px;
-        max-width: 100%;
     }
     
-    .contact-form h3 {
-        font-size: 1.3rem;
-    }
-    
-    .form-group {
-        margin-bottom: 12px;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        padding: 12px 14px;
-        font-size: 0.9rem;
-    }
-    
-    /* FAQ - Compact with less whitespace */
-    .faq {
-        padding: 50px 0;
-    }
-    
-    .faq-grid {
-        gap: 10px;
-    }
-    
-    .faq-question {
-        padding: 14px 16px;
-        font-size: 0.95rem;
-    }
-    
-    .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-    }
-    
-    .faq-item.active .faq-answer {
-        max-height: 150px;
-    }
-    
-    .faq-answer p {
-        padding: 0 16px 14px;
-        font-size: 0.85rem;
-    }
-    
-    .contact-form-wrapper {
-        padding: 24px 18px;
-        overflow-x: hidden;
-        max-width: 100%;
-    }
-    
-    .contact-form-wrapper * {
-        max-width: 100%;
-    }
-    
-    /* Map */
     .map-container {
-        height: 280px;
-        max-width: 100%;
-        overflow: hidden;
+        height: 260px;
     }
     
-    .map-container iframe {
-        max-width: 100%;
-        width: 100% !important;
-    }
-    
-    /* Footer - Compact */
     .footer {
-        padding: 40px 0 20px;
-    }
-    
-    .footer-grid {
-        gap: 24px;
-        overflow-x: hidden;
-        max-width: 100%;
-    }
-    
-    .footer, .footer * {
-        max-width: 100%;
-        overflow-x: hidden;
+        padding: 36px 0 20px;
     }
     
     .footer h4 {
-        font-size: 1rem;
-        margin-bottom: 14px;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
     }
     
-    .footer-links a,
-    .footer-services a {
-        font-size: 0.85rem;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 14px;
-        text-align: center;
-        padding-top: 20px;
-    }
-}
-    
-    /* Adjust WhatsApp float position */
     .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 16px;
-        right: 16px;
+        width: 48px;
+        height: 48px;
+        bottom: 14px;
+        right: 14px;
     }
 }
-    
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    section {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    section * {
-        max-width: 100%;
-    }
